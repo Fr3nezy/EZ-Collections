@@ -2,7 +2,7 @@
 
 import bpy
 from bpy.types import AddonPreferences
-from bpy.props import StringProperty, BoolProperty, FloatVectorProperty
+from bpy.props import StringProperty, BoolProperty, EnumProperty
 
 
 class EZCollectionsPreferences(AddonPreferences):
@@ -21,14 +21,21 @@ class EZCollectionsPreferences(AddonPreferences):
         default="",
     )
     
-    collection_color: FloatVectorProperty(
-        name="Collection Color",
-        description="Default color for new collections",
-        subtype='COLOR',
-        size=3,
-        min=0.0,
-        max=1.0,
-        default=(1.0, 0.647, 0.0),  # Blender orange
+    collection_color_tag: EnumProperty(
+        name="Collection Color Tag",
+        description="Color tag for new collections (matches Blender's built-in color tags)",
+        items=[
+            ('NONE',     "None",   "No color tag",         'X',                    0),
+            ('COLOR_01', "Red",    "Red color tag",         'COLLECTION_COLOR_01',  1),
+            ('COLOR_02', "Orange", "Orange color tag",      'COLLECTION_COLOR_02',  2),
+            ('COLOR_03', "Yellow", "Yellow color tag",      'COLLECTION_COLOR_03',  3),
+            ('COLOR_04', "Green",  "Green color tag",       'COLLECTION_COLOR_04',  4),
+            ('COLOR_05', "Teal",   "Teal color tag",        'COLLECTION_COLOR_05',  5),
+            ('COLOR_06', "Blue",   "Blue color tag",        'COLLECTION_COLOR_06',  6),
+            ('COLOR_07', "Violet", "Violet color tag",      'COLLECTION_COLOR_07',  7),
+            ('COLOR_08', "Pink",   "Pink color tag",        'COLLECTION_COLOR_08',  8),
+        ],
+        default='NONE',
     )
     
     create_in_active_collection: BoolProperty(
@@ -48,7 +55,7 @@ class EZCollectionsPreferences(AddonPreferences):
         
         box = layout.box()
         box.label(text="Collection Appearance", icon='COLOR')
-        box.prop(self, "collection_color")
+        box.prop(self, "collection_color_tag")
         
         box = layout.box()
         box.label(text="Creation Mode", icon='OUTLINER_COLLECTION')

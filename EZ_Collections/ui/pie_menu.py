@@ -12,8 +12,7 @@ class VIEW3D_MT_ez_collections_pie(Menu):
         """Draw pie menu layout"""
         layout = self.layout
         pie = layout.menu_pie()
-        
-        # 4-sector layout (simplified from 8)
+
         # West
         pie.operator(
             "object.ez_add_to_collection",
@@ -37,4 +36,16 @@ class VIEW3D_MT_ez_collections_pie(Menu):
             "object.ez_toggle_solo_collection",
             text="Solo",
             icon='RESTRICT_VIEW_ON'
+        )
+        # North-West
+        pie.operator(
+            "object.ez_edit_pivot",
+            text="Edit Pivot",
+            icon='OBJECT_ORIGIN'
+        )
+        # North-East
+        pie.operator(
+            "object.ez_set_pivot",
+            text="Set Pivot",
+            icon='SNAP_MIDPOINT'
         )

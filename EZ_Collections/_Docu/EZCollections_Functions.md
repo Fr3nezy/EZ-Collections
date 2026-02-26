@@ -26,7 +26,7 @@ Global addon preferences accessible via Edit → Preferences → Add-ons → EZC
 **Properties:**
 - `collection_prefix`: String prefix added to collection names (default: "")
 - `collection_suffix`: String suffix added to collection names (default: "")
-- `collection_color`: Color picker for default collection color (default: Blender orange)
+- `collection_color_tag`: Enum selector for default collection color tag (default: `NONE`). Uses Blender's built-in color tags: `NONE`, `COLOR_01` (Red), `COLOR_02` (Orange), `COLOR_03` (Yellow), `COLOR_04` (Green), `COLOR_05` (Teal), `COLOR_06` (Blue), `COLOR_07` (Violet), `COLOR_08` (Pink)
 - `create_in_active_collection`: Boolean toggle for creation mode (default: False)
 
 ## Operators
@@ -81,7 +81,7 @@ Global addon preferences accessible via Edit → Preferences → Add-ons → EZC
 **Location**: View3D → Sidebar (N) → EZ Collections
 **Sections**:
 - **Collection Naming**: Prefix/suffix controls with live preview
-- **Collection Appearance**: Color picker for collections
+- **Collection Appearance**: Color tag selector (9 options: None + 8 Blender built-in color tags)
 - **Creation Mode**: Toggle between root and active collection placement
 
 ### Pie Menu (VIEW3D_MT_ez_collections_pie)

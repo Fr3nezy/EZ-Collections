@@ -65,8 +65,16 @@ class OBJECT_OT_ez_create_collection(Operator):
                 old_col.objects.unlink(obj)
             col.objects.link(obj)
         
+        # Apply Blender color tag from preferences
+        col.color_tag = prefs.collection_color_tag
+
         # Create EZ wrapper
         ez_col = EZCollection(col)
-        
+
+        # Auto-create pivot at bounding box center
+        from ..core.pivot import set_pivot_position, compute_bounding_box_center
+        pivot_pos = compute_bounding_box_center(col)
+        set_pivot_position(col, pivot_pos)
+
         self.report({'INFO'}, f"Created '{final_name}'")
         return {'FINISHED'}
